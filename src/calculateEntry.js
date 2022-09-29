@@ -1,6 +1,6 @@
 const data = require('../data/zoo_data');
 
-function countEntrants(entrants) {
+function countEntrants(entrants) {1
   // seu código aqui
 }
 
