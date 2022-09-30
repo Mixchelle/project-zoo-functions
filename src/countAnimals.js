@@ -1,7 +1,15 @@
-const data = require('../data/zoo_data');
+const { species } = require('../data/zoo_data');
 
-function countAnimals(animal) {
-  // seu código aqui
+function countAnimals(animal, sexo) {
+  let residents = {};
+  if (!animal) {
+    const obj = species.reduce((acc, cur) => {
+      acc[cur.name] = cur.residents.length;
+      return acc;
+    }, { });
+    residents = obj;
+    return residents;
+  }
 }
 
 module.exports = countAnimals;
