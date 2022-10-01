@@ -1,6 +1,6 @@
 const { species } = require('../data/zoo_data');
 
-function countAnimals(animal, sexo) {
+function countAnimals(animal) {
   let residents = {};
   if (!animal) {
     const obj = species.reduce((acc, cur) => {
