@@ -25,4 +25,13 @@ describe('Testes da função HandlerElephants', () => {
   it('Se a função recbe o parametro averageage deve returnar uma soma ', () => {
     expect(handlerElephants('averageAge')).toEqual(10.5);
   });
+  it('se a função receber o parametro names deve retornar Jefferson', () => {
+    expect(handlerElephants('names')).toContain('Jefferson');
+  });
+  it('O argumento popularity deve retornar um número igual ou maior a 5: ', () => {
+    expect(handlerElephants('popularity')).toBeGreaterThanOrEqual(5);
+  });
+  it('Se a função receber o paramentro availability deve retornar um array de dias da semana que não contém Monday: ', () => {
+    expect(handlerElephants('availability')).not.toContain('Monday');
+  });
 });
