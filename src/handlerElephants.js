@@ -29,10 +29,7 @@ const handlerElephants = (param) => {
   const elephants = getElephants();
   if (Object.keys(elephants).includes(param)) {
     return elephants[param];
-  }
-  return computeData(param, elephants);
+  } return computeData(param, elephants);
 };
 
 module.exports = handlerElephants;
-
-console.log(handlerElephants());
