@@ -34,4 +34,10 @@ describe('Testes da função HandlerElephants', () => {
   it('Se a função receber o paramentro availability deve retornar um array de dias da semana que não contém Monday: ', () => {
     expect(handlerElephants('availability')).not.toContain('Monday');
   });
+  it('Passada uma string que nao tenha uma funcionalidade deve retornar null: ', () => {
+    expect(handlerElephants(' ')).toEqual(null);
+  });
+  it('se a função receber o parametro location deve retornar a string NW: ', () => {
+    expect(handlerElephants('location')).toBe('NW');
+  });
 });
