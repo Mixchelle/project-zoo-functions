@@ -13,16 +13,16 @@ describe('Testes da função getOpeningHours', () => {
     };
     expect(getOpeningHours()).toEqual(hours);
   });
-  it('se inserir uma data valida deve retornar aberto ou fechado', () => {
+  it('se inserir uma data valida deve retornar open ou close', () => {
     expect(getOpeningHours('Wednesday', '09:00-AM')).toEqual('The zoo is open');
   });
-  it('se inserir uma data valida deve retornar aberto ou fechado', () => {
+  it('se inserir uma data da semana valida deve retornar aberto ou fechado', () => {
     expect(getOpeningHours('Monday', '09:00-AM')).toEqual('The zoo is closed');
   });
   it('se inserir uma data valida deve retornar aberto ou fechado', () => {
     expect(getOpeningHours('Saturday', '10:00-AM')).toEqual('The zoo is open');
   });
-  it('se inserir uma data valida deve retornar aberto ou fechado', () => {
+  it('se inserir uma data valida deve-se retornar aberto ou fechado', () => {
     expect(getOpeningHours('Thursday', '10:00-PM')).toEqual('The zoo is closed');
   });
   it('Se inserir uma data invalida retornar um erro', () => {
@@ -47,6 +47,6 @@ describe('Testes da função getOpeningHours', () => {
     expect(() => (getOpeningHours('Tuesday', '10:00')).toThrowError('The abbreviation must be \'AM\' or \'PM\''));
   });
   it('Se nao for inserido um numero nas horas retornar erro', () => {
-    expect(() => (getOpeningHours('Tuesday', 'dez:00')).toThrowError(`The ${what} should represent a number`));
+    expect(() => (getOpeningHours('Tuesday', 'dez:00')).toThrowError('The should represent a number'));
   });
 });
