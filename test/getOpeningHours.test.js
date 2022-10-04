@@ -13,6 +13,12 @@ describe('Testes da função getOpeningHours', () => {
     };
     expect(getOpeningHours()).toEqual(hours);
   });
+  it('Testa se é uma função', () => {
+    expect(typeof getOpeningHours).toBe('function');
+  });
+  it('testa se retorna uma string', () => {
+    expect(typeof getOpeningHours('Wednesday', '09:00-AM')).toBe('string');
+  });
   it('se inserir uma data valida deve retornar open ou close', () => {
     expect(getOpeningHours('Wednesday', '09:00-AM')).toEqual('The zoo is open');
   });
@@ -48,5 +54,8 @@ describe('Testes da função getOpeningHours', () => {
   });
   it('Se nao for inserido um numero nas horas retornar erro', () => {
     expect(() => (getOpeningHours('Tuesday', 'dez:00')).toThrowError('The should represent a number'));
+  });
+  it('Se nao for inserido um numero nos minutos retornar erro', () => {
+    expect(() => getOpeningHours('Sunday', '09:C0-AM')).toThrowError('The minutes should represent a number');
   });
 });
