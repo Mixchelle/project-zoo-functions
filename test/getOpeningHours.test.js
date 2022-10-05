@@ -84,7 +84,7 @@ describe('Testes da função getOpeningHours', () => {
   });
   it('Se inserirum valor de minuto invalido retornar erro', () => {
     expect(() => {
-      getOpeningHours('Tuesday', '08:64-AM');
+      getOpeningHours('Tuesday', '10:64-AM');
     }).toThrow('The minutes must be between 0 and 59');
   });
 });
