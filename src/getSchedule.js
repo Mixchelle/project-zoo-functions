@@ -40,9 +40,7 @@ const daysWeek = {
 function getSchedule(scheduleTarget) {
   if (!scheduleTarget) {
     return daysWeek;
-  }
-  const animal = data.species.some((cond) => scheduleTarget === cond.name);
-  if (!animal && !daysWeek.includes(scheduleTarget)) {
+  } if ((daysWeek.includes)) {
     return daysWeek;
   }
 }
