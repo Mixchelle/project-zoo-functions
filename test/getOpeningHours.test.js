@@ -40,12 +40,13 @@ describe('Testes da função getOpeningHours', () => {
     expect(() => (getOpeningHours('Tuesday', '21:00-AM')).toThrowError('The hour must be between 0 and 12'));
     expect(() => (getOpeningHours('Wednesday', '09:61-AM')).toThrowError('The minutes must be between 0 and 59'));
     expect(() => (getOpeningHours('Friday', '08:91-AM')).toThrowError('The minutes must be between 0 and 59'));
-    expect(() => (getOpeningHours('Frixxday', '08:91-AM')).toThrowError('The day must be valid. Example: Monday'));
+    expect(() => (getOpeningHours('Friday', '08:91-AM')).toThrowError('The day must be valid. Example: Monday'));
     expect(() => (getOpeningHours('hoje', '08:91-AM')).toThrowError('The day must be valid. Example: Monday'));
     expect(() => (getOpeningHours('Tuesday', '10:00')).toThrowError('The abbreviation must be \'AM\' or \'PM\''));
     expect(() => (getOpeningHours('Saturday', '10:00')).toThrowError('The abbreviation must be \'AM\' or \'PM\''));
     expect(() => (getOpeningHours('Tuesday', 'dez:00')).toThrowError('The should represent a number'));
-    expect(() => getOpeningHours('Sunday', '09:C0-AM')).toThrowError('The minutes should represent a number');
-    expect(() => getOpeningHours('Sunday', '09:aa-AM')).toThrowError('The minutes should represent a number');
+    expect(() => (getOpeningHours('Tuesday', 'onze:00')).toThrowError('The should represent a number'));
+    expect(() => (getOpeningHours('Sunday', '09:C0-AM')).toThrowError('The minutes should represent a number'));
+    expect(() => (getOpeningHours('Sunday', '09:aa-AM')).toThrowError('The minutes should represent a number'));
   });
 });
