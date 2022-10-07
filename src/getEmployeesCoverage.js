@@ -18,7 +18,6 @@ function getEmployeesCoverage(objeto) {
   }
   const findEmployee = employeesList.find((person) =>
     person.fullName.includes(objeto.name) || person.id === objeto.id);
-    
   if (!findEmployee) {
     throw new Error('Informações inválidas');
   }
@@ -26,5 +25,3 @@ function getEmployeesCoverage(objeto) {
 }
 
 module.exports = getEmployeesCoverage;
-
-console.log(getEmployeesCoverage({ id: 'c1f50212-35a6-4ecd-8223-f835538526c2' }));
