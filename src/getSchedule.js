@@ -37,10 +37,8 @@ const daysWeek = {
   },
 };
 
-function getSchedule(scheduleTarget) {
-  if (!scheduleTarget) {
-    return daysWeek;
-  } if ((daysWeek.includes)) {
+function getSchedule(dayName) {
+  if (!dayName) {
     return daysWeek;
   }
 }
