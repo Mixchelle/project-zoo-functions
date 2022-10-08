@@ -4,6 +4,7 @@ describe('Testes da função getOpeningHours', () => {
   it('Testa se é uma função', () => {
     expect(typeof getOpeningHours).toBe('function');
   });
+
   it('testa se retorna uma string', () => {
     expect(typeof getOpeningHours('Wednesday', '09:00-AM')).toBe('string');
     expect(typeof getOpeningHours('Monday', '09:00-AM')).toBe('string');
@@ -22,6 +23,7 @@ describe('Testes da função getOpeningHours', () => {
     };
     expect(getOpeningHours()).toEqual(horario);
   });
+
   it('se inserir uma data valida deve retornar open ', () => {
     const open = 'The zoo is open';
     expect(getOpeningHours('Wednesday', '09:00-AM')).toEqual(open);
@@ -39,12 +41,16 @@ describe('Testes da função getOpeningHours', () => {
   });
 
   it('Testa se retorna erro de correção da escrita da abreviação', () => {
+    const erro = 'The abbreviation must be \'AM\' or \'PM\'';
     expect(() => {
       getOpeningHours('Saturday', '10:00-KM');
-    }).toThrow('The abbreviation must be \'AM\' or \'PM\'');
+    }).toThrow(erro);
     expect(() => {
       getOpeningHours('Tuesday', '10:00');
-    }).toThrow('The abbreviation must be \'AM\' or \'PM\'');
+    }).toThrow(erro);
+    expect(() => {
+      getOpeningHours('Wednesday', '10:00-xx');
+    }).toThrow(erro);
   });
 
   it('Se inserir um valor de abreviação invalido retornar um erro', () => {
@@ -67,24 +73,31 @@ describe('Testes da função getOpeningHours', () => {
 
   it('Se inserir um valor de minutos  que nao seja numero  retornar um erro', () => {
     expect(() => {
-      getOpeningHours(('Sunday', '09:XX-AM'));
-    }).toThrow('The minutes should represent a number');
+      getOpeningHours(('Sunday', '09:C0-AM'));
+    }).toThrow("The day must be valid. Example: Monday");
     expect(() => {
-      getOpeningHours(('Friday', '09:BB-AM'));
-    }).toThrow('The minutes should represent a number');
+      getOpeningHours(('Saturday', '09:BB-AM'));
+    }).toThrow("The day must be valid. Example: Monday");
   });
 
   it('Se inserir um valor de horas que nao seja numero retornar um erro', () => {
     expect(() => {
-      getOpeningHours('Tuesday', 'dez:00');
+      getOpeningHours('Tuesday', '25:00-AM');
     }).toThrow('The hour must be between 0 and 12');
     expect(() => {
-      getOpeningHours('Sunday', '23:00');
+      getOpeningHours('Sunday', '23:00-PM');
     }).toThrow('The hour must be between 0 and 12');
   });
+
   it('Se inserirum valor de minuto invalido retornar erro', () => {
     expect(() => {
       getOpeningHours('Tuesday', '10:64-AM');
     }).toThrow('The minutes must be between 0 and 59');
+    expect(() => {
+      getOpeningHours('Sunday', '08:87-AM');
+    }).toThrow('The minutes must be between 0 and 59');
+  });
+  it ('Se os minutos forem invalidos', () => {
+    expect(() => getOpeningHours('Sunday', '09:C0-AM')).toThrow('The minutes should represent a number');
   });
 });

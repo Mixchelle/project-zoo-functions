@@ -4,6 +4,15 @@ describe('Testes da função HandlerElephants', () => {
   it('Testa se é uma função', () => {
     expect(typeof handlerElephants).toBe('function');
   });
+  it('ao receber o parametro averageAge deve retornar um numero', () => {
+    expect(typeof handlerElephants('average')).toBe('number');
+  });
+  it('se receber o parametro names deve receber um objeto', () => {
+    expect(typeof handlerElephants('names')).toBe('object');
+  });
+  it('Se receber o  parâmetro count deve retornar 4', () => {
+    expect(handlerElephants('count')).toEqual(4);
+  });
   it('Se nao houver parametro deve retornar undefined', () => {
     expect(handlerElephants()).toEqual(undefined);
   });
@@ -13,21 +22,17 @@ describe('Testes da função HandlerElephants', () => {
     expect(handlerElephants({})).toEqual(string);
     expect(handlerElephants([])).toEqual(string);
   });
-  it('Para o argumento popularity deve retornar um número igual ou maior a 5', () => {
+  it('Se receber o parametro popularity deve retornar um número igual 5', () => {
     expect(handlerElephants('popularity')).toBeGreaterThanOrEqual(5);
   });
-  it('se receber o parametro names deve receber um objeto', () => {
-    expect(typeof handlerElephants('names')).toBe('object');
-  });
+
   it('se receber o parametro names deve receber um objeto com nome de todos os elefantes', () => {
     expect(handlerElephants('names')).toEqual(['Ilana', 'Orval', 'Bea', 'Jefferson']);
   });
   it('Se a função recebe o parametro averageage deve returnar uma soma ', () => {
     expect(handlerElephants('averageAge')).toEqual(10.5);
   });
-  it('ao receber o parametro averageAge deve retornar um numero', () => {
-    expect(typeof handlerElephants('average')).toBe('number');
-  });
+
   it('se a função receber o parametro names deve retornar ', () => {
     expect(handlerElephants('names')).toContain('Ilana');
     expect(handlerElephants('names')).toContain('Orval');
