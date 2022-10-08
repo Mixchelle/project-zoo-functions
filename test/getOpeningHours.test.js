@@ -72,12 +72,8 @@ describe('Testes da função getOpeningHours', () => {
   });
 
   it('Se inserir um valor de minutos  que nao seja numero  retornar um erro', () => {
-    expect(() => {
-      getOpeningHours(('Sunday', '09:C0-AM'));
-    }).toThrow("The day must be valid. Example: Monday");
-    expect(() => {
-      getOpeningHours(('Saturday', '09:BB-AM'));
-    }).toThrow("The day must be valid. Example: Monday");
+    expect(() => getOpeningHours('Sunday', '09:C0-AM')).toThrow('The minutes should represent a number');
+    expect(() => getOpeningHours('Sunday', '09:X0-AM')).toThrow('The minutes should represent a number');
   });
 
   it('Se inserir um valor de horas que nao seja numero retornar um erro', () => {
@@ -96,8 +92,5 @@ describe('Testes da função getOpeningHours', () => {
     expect(() => {
       getOpeningHours('Sunday', '08:87-AM');
     }).toThrow('The minutes must be between 0 and 59');
-  });
-  it ('Se os minutos forem invalidos', () => {
-    expect(() => getOpeningHours('Sunday', '09:C0-AM')).toThrow('The minutes should represent a number');
   });
 });
