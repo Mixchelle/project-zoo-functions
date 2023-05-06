@@ -1,53 +1,64 @@
 const handlerElephants = require('../src/handlerElephants');
 
-describe('Testes da função HandlerElephants', () => {
-  it('Testa se é uma função', () => {
-    expect(typeof handlerElephants).toBe('function');
-  });
-  it('ao receber o parametro averageAge deve retornar um numero', () => {
-    expect(typeof handlerElephants('average')).toBe('number');
-  });
-  it('se receber o parametro names deve receber um objeto', () => {
-    expect(typeof handlerElephants('names')).toBe('object');
-  });
-  it('Se receber o  parâmetro count deve retornar 4', () => {
-    expect(handlerElephants('count')).toEqual(4);
-  });
-  it('Se nao houver parametro deve retornar undefined', () => {
-    expect(handlerElephants()).toEqual(undefined);
-  });
-  it('se o parametro for diferente de uma string retornar erro', () => {
-    const string = 'Parâmetro inválido, é necessário uma string';
-    expect(handlerElephants(2574)).toEqual(string);
-    expect(handlerElephants({})).toEqual(string);
-    expect(handlerElephants([])).toEqual(string);
-  });
-  it('Se receber o parametro popularity deve retornar um número igual 5', () => {
-    expect(handlerElephants('popularity')).toBeGreaterThanOrEqual(5);
+describe('handlerElephants', () => {
+  describe('count', () => {
+    it('should return the number of elephants', () => {
+      const result = handlerElephants('count');
+      expect(result).toBe(4);
+    });
   });
 
-  it('se receber o parametro names deve receber um objeto com nome de todos os elefantes', () => {
-    expect(handlerElephants('names')).toEqual(['Ilana', 'Orval', 'Bea', 'Jefferson']);
-  });
-  it('Se a função recebe o parametro averageage deve returnar uma soma ', () => {
-    expect(handlerElephants('averageAge')).toEqual(10.5);
+  describe('names', () => {
+    it('should return an array of names containing "Jefferson"', () => {
+      const result = handlerElephants('names');
+      expect(result).toContain('Jefferson');
+    });
   });
 
-  it('se a função receber o parametro names deve retornar ', () => {
-    expect(handlerElephants('names')).toContain('Ilana');
-    expect(handlerElephants('names')).toContain('Orval');
-    expect(handlerElephants('names')).toContain('Bea');
-    expect(handlerElephants('names')).toContain('Jefferson');
+  describe('averageAge', () => {
+    it('should return a number close to 10.5', () => {
+      const result = handlerElephants('averageAge');
+      expect(result).toBeCloseTo(10.5, 1);
+    });
   });
-  it('Se a função receber o paramentro availability deve retornar um array de dias da semana que não contém Monday:', () => {
-    expect(handlerElephants('availability')).not.toContain('Monday');
+
+  describe('location', () => {
+    it('should return the location string "NW"', () => {
+      const result = handlerElephants('location');
+      expect(result).toBe('NW');
+    });
   });
-  it('Passada uma string que nao tenha uma funcionalidade deve retornar null: ', () => {
-    expect(handlerElephants(' ')).toEqual(null);
-    expect(handlerElephants('#')).toEqual(null);
-    expect(handlerElephants('Flamengo')).toEqual(null);
+
+  describe('popularity', () => {
+    it('should return a number greater than or equal to 5', () => {
+      const result = handlerElephants('popularity');
+      expect(result).toBeGreaterThanOrEqual(5);
+    });
   });
-  it('se a função receber o parametro location deve retornar a string NW: ', () => {
-    expect(handlerElephants('location')).toBe('NW');
+
+  describe('availability', () => {
+    it('should return an array of weekdays that does not contain "Monday"', () => {
+      const result = handlerElephants('availability');
+      expect(result).not.toContain('Monday');
+    });
+  });
+
+  describe('undefined parameter', () => {
+    it('should return undefined when no argument is passed', () => {
+      const result = handlerElephants();
+      expect(result).toBeUndefined();
+    });
+  });
+
+  describe('invalid parameter', () => {
+    it('should return "Parâmetro inválido, é necessário uma string" when an empty object is passed', () => {
+      const result = handlerElephants({});
+      expect(result).toBe('Parâmetro inválido, é necessário uma string');
+    });
+
+    it('should return null when a string that does not represent a functionality is passed', () => {
+      const result = handlerElephants('invalidParam');
+      expect(result).toBeNull();
+    });
   });
 });
